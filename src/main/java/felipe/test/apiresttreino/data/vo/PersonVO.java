@@ -1,39 +1,26 @@
-package felipe.test.apiresttreino.model;
+package felipe.test.apiresttreino.data.vo;
 
-import jakarta.persistence.*;
-
+import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name="person")
-public class Person {
+public class PersonVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "first_name", length = 50)
+    private Long Id;
     private String firstName;
-
-    @Column(name = "last_name", length = 50)
     private String lastName;
-
-    @Column(nullable = false, length = 100)
     private String address;
-
-    @Column(nullable = false, length = 15)
     private String genero;
 
-    public Person() {
+    public PersonVO() {
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getFirstName() {
@@ -72,12 +59,12 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(genero, person.genero);
+        PersonVO personVO = (PersonVO) o;
+        return Objects.equals(Id, personVO.Id) && Objects.equals(firstName, personVO.firstName) && Objects.equals(lastName, personVO.lastName) && Objects.equals(address, personVO.address) && Objects.equals(genero, personVO.genero);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, genero);
+        return Objects.hash(Id, firstName, lastName, address, genero);
     }
 }
